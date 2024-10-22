@@ -21,6 +21,10 @@ pangenoma[,c("Non-unique Gene name","Annotation","No. isolates","No. sequences",
 pangenoma_t <- t(pangenoma)
 rownames(pangenoma_t) <- str_replace(rownames(pangenoma_t),".gbk", "")
 
+num_ref <- 96 # PONER NUMERO DE REFERENCIAS
+num_mags <- 53 # PONER NUMERO DE MAGS
+num_genomas <- num_ref + num_mags
+
 #Generar csv.s para dummy's
 rownames_df <- cbind(row.names = rownames(pangenoma_t))
 write.csv(rownames_df, "1_dummy.csv", row.names = FALSE)
@@ -48,12 +52,12 @@ pangenoma_t_3 <- pangenoma_t_3 %>%
   column_to_rownames("Row.names")
 
 # (1, no. genomas)
-unos <- rep(1,149) #repite (1, n número de veces)
+unos <- rep(1,num_genomas) #repite (1, n número de veces)
 unos <- as.data.frame(unos)
 rownames(unos) <- rownames(pangenoma_t_3)
 colnames(unos) <- "unos.faa"
 
-ceros <- rep(0,149) #repite (0, n número de veces)
+ceros <- rep(0,num_genomas) #repite (0, n número de veces)
 ceros <- as.data.frame(ceros)
 rownames(ceros) <- rownames(pangenoma_t_3)
 colnames(ceros) <- "ceros.faa"
