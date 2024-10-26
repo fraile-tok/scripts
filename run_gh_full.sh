@@ -16,7 +16,7 @@ echo "Total number of taxa:" $numTaxa
 echo "Using cores:" $numCore
 
 # Pangenoma
-nohup $get_homologues_path -d "$pathDir" -t 0 -M -e -n "$numCore" log_gh_pan.txt 2>&1
+nohup $get_homologues_path -d "$pathDir" -t 0 -M -e -n "$numCore" > log_gh_pan.txt 2>&1
 
 # Coregenoma
 nohup $get_homologues_path -d "$pathDir" -t "$numTaxa" -M -e -n "$numCore" > log_gh_core_OMCL.txt 2>&1
