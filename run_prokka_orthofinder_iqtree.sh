@@ -6,10 +6,10 @@
 module load prokka-master-gcc-9.3.0-j436ckw # Load prokka
 
 for F in *.fna; do 
-  echo "Processing file: $F"
+  echo "Processing file: $F";
   N=$(basename $F .fna) ; 
-  echo "Locus tag: $N"
-  prokka --kingdom Bacteria --cpus 20  --locustag "$N" --increment 1 --outdir "$N" "$F"
+  echo "Locus tag: $N";
+  prokka --kingdom Bacteria --cpus 20  --locustag "$N" --increment 1 --outdir "$N" --prefix "$N" "$F" ;
 done
 
 ################################################################################
