@@ -15,11 +15,11 @@ done
 ################################################################################
 # ORTHOFINDER
 ################################################################################
-module load orthofinder-2.2.0-gcc-9.3.0-g6x3cuu # Load orthofinder
-
 module load miniconda3-4.9.2-gcc-9.3.0-mdbjxs2 # Load conda
 conda init bash
 conda activate fastree # Activate conda environment w/FastTree (required for orthofinder)
+
+module load orthofinder-2.2.0-gcc-9.3.0-g6x3cuu # Load orthofinder (loading it now to avoid having issues with fastree env)
 
 mkdir -p orthofinder
 cd orthofinder
