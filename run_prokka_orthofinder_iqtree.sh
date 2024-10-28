@@ -37,6 +37,8 @@ orthofinder -f ./orthofinder -S diamond -M msa -t 40 -a 20 -n orthofinder_out
 mkdir -p iqtree
 cd iqtree
 
+module load miniconda3-4.9.2-gcc-9.3.0-mdbjxs2 # Load conda
+conda init bash
 conda activate iqtree # Activate conda environment w/iqtree
 
 iqtree -m MFP -s ../orthofinder/Results_orthofinder_out_*/Orthologues_orthofinder_out_*/Aligments/SpeciesTreeAlignment.fa -B 1000 -T AUTO -ntmax 30
