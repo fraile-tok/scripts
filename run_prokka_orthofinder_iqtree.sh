@@ -1,4 +1,5 @@
 #!/bin/bash
+source /opt/spack/opt/spack/linux-ubuntu18.04-skylake_avx512/gcc-9.3.0/miniconda3-4.9.2-mdbjxs2/etc/profile.d/conda.sh
 
 ################################################################################
 # PROKKA
