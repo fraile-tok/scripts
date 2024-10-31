@@ -1,4 +1,5 @@
 #!/bin/bash
+source /opt/spack/opt/spack/linux-ubuntu18.04-skylake_avx512/gcc-9.3.0/miniconda3-4.9.2-mdbjxs2/etc/profile.d/conda.sh # Load conda
 
 ################################################################################
 # PROKKA
@@ -15,8 +16,6 @@ done
 ################################################################################
 # ORTHOFINDER
 ################################################################################
-module load miniconda3-4.9.2-gcc-9.3.0-mdbjxs2 # Load conda
-conda init bash
 conda activate fastree # Activate conda environment w/FastTree (required for orthofinder)
 
 module load orthofinder-2.2.0-gcc-9.3.0-g6x3cuu # Load orthofinder (loading it now to avoid having issues with fastree env
@@ -33,7 +32,6 @@ orthofinder -f ./orthofinder -S diamond -M msa -t 40 -a 20 -n orthofinder_out
 ################################################################################
 # IQTREE
 ################################################################################
-
 mkdir -p iqtree
 cd iqtree
 
@@ -44,7 +42,6 @@ iqtree -m MFP -s ../orthofinder/Results_orthofinder_out_*/Orthologues_orthofinde
 ################################################################################
 # Prep directories for get_homologues.pl
 ################################################################################
-
 cd ../
 mkdir -p get_homologues
 cd get_homologues
@@ -55,7 +52,6 @@ cd ../
 ################################################################################
 # Run get_homologues.pl
 ################################################################################
-
 conda activate get_homologues # Activate conda environment w/get_homologues
 
 # Define variables
