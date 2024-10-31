@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ################################################################################
-# PROKKA
+# PROKKA (works with preprocessed .fna files)
 ################################################################################
 module load prokka-master-gcc-9.3.0-j436ckw # Load prokka
 
@@ -39,7 +39,9 @@ cd iqtree
 
 conda activate iqtree # Activate conda environment w/iqtree
 
-iqtree -m MFP -s ../orthofinder/Results_orthofinder_out_*/Orthologues_orthofinder_out_*/Aligments/SpeciesTreeAlignment.fa -B 1000 -T AUTO -ntmax 30
+ls ../orthofinder/Results_orthofinder_out_*/Orthologues_orthofinder_out_*/Aligments/SpeciesTreeAlignment.fa
+
+iqtree -m MFP -s ./SpeciesTreeAlignment.fa -B 1000 -T AUTO -ntmax 30
 
 ################################################################################
 # Prep directories for get_homologues.pl
@@ -71,3 +73,10 @@ nohup $get_homologues_path -d "$pathDir" -t 0 -M -e -n "$numCore" > log_gh_pan.t
 nohup $get_homologues_path -d "$pathDir" -t "$numTaxa" -M -e -n "$numCore" > log_gh_core_OMCL.txt 2>&1
 nohup $get_homologues_path -d "$pathDir" -t "$numTaxa" -G -e -n "$numCore" > log_gh_core_COG.txt 2>&1
 nohup $get_homologues_path -d "$pathDir" -t "$numTaxa" -e -n "$numCore" > log_gh_core_BDBH.txt 2>&1 &
+
+################################################################################
+# Future updates
+# compare_clusters.pl -> coregenoma/pangenoma
+# Scritps R -> matriz_pangenoma_cc.csv
+# matriz_pangenoma_cc.csv -> BayesTraits prep 
+################################################################################
