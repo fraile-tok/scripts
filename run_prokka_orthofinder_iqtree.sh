@@ -16,9 +16,12 @@ done
 ################################################################################
 # ORTHOFINDER
 ################################################################################
+
 module load orthofinder-2.2.0-gcc-9.3.0-g6x3cuu # Load orthofinder
 
 conda activate fastree # Activate conda environment w/FastTree (required for orthofinder)
+
+module load orthofinder-2.2.0-gcc-9.3.0-g6x3cuu # Load orthofinder (loading it now to avoid having issues with fastree env)
 
 mkdir -p orthofinder
 cd orthofinder
@@ -41,6 +44,6 @@ conda activate iqtree # Activate conda environment w/iqtree
 iqtree -m MFP -s ../orthofinder/Results_orthofinder_out_*/Orthologues_orthofinder_out_*/Aligments/SpeciesTreeAlignment.fa -B 1000 -T AUTO -ntmax 30
 
 ################################################################################
-# Future Updates
-# Prepare directories for get_homologues.pl (and compare_clusters.pl)
+# Future updates
+# Prep files and directories for get_homologues.pl
 ################################################################################
